@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block title %} Edit post {% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h1>Update Post...</h1>
+    <hr>
+    <br>
+    <div class="form-group">
+
+          <form method ="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+          <button class="btn btn-primary">Update Post</button>
+     <!-- <input type="button" class="btn btn-primary" name="Updatebutton" value="Update"> -->
+      </form>
+    </div>
+{% else %}
+
+You don't have a member access
+
+{% endif %}
+
+{% endblock %}

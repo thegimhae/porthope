@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html'%}
+
+    {% block content %}
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Events</h1>
+    
+    {% for event in events %}
+      <h2>{{event.name}}</h2>
+      <ul>
+        <li>Date: {{ event.event_date }}</li>
+        <li>Venue: {{ event.venue }}</li>
+        <li>Venue Website: {{ event.venue.web }}</li>
+        <li>Manager: {{ event.manager }}</li>
+        <li>description: {{ event.description }}</li>
+        {% for user in event.ateendees %}
+        <li>attendees: {{ user }}</li>
+        {% endfor %}
+      </ul>
+  </div>
+
+  <div class="card" style="width: 18rem;">
+  <img src="http://1.bp.blogspot.com/-nm3chh563rI/T56c1zt78jI/AAAAAAAAAxk/LfdjD8bTToo/w1200-h630-p-k-no-nu/good+spread.jpg" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{event.name}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Date: {{ event.event_date }}</li>
+    <li class="list-group-item">Venue: {{ event.venue }}</li>
+    <li class="list-group-item">Contact: {{ event.manager }}</li>
+    <li class="list-group-item">attendees: {{ event.user }}</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+
+    {% endfor %}
+
+    {% endblock %}
